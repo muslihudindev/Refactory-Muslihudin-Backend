@@ -4,15 +4,19 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
+	"io"
+	"log"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
+	"github.com/yudapc/go-rupiah as rupiah"
 )
 
 type Datas struct {
-	Name     string `json:"name"`
-	Category string `json:"category"`
-	Price    string `json:"price"`
+	Name     string  `json:"name"`
+	Category string  `json:"category"`
+	Price    float64 `json:"price"`
 }
 
 func main() {
@@ -24,20 +28,25 @@ func main() {
 
 	r := csv.NewReader(csv_file)
 	r.Read()
-	records, err := r.ReadAll()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
 
-	var daftar Datas
 	var tdaftar []Datas
-
-	for _, rec := range records {
-		daftar.Name = strings.TrimSpace(rec[0])
-		daftar.Category = strings.TrimSpace(rec[1])
-		daftar.Price = strings.TrimSpace(rec[2])
-		tdaftar = append(tdaftar, daftar)
+	for {
+		// Read each record from csv
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(strings.TrimSpace(record[2]))
+		feetFloat, _ := strconv.ParseFloat(strings.TrimSpace(record[2]), 64)
+		formatRupiah := rupiah.FormatRupiah(feetFloat)
+		tdaftar = append(tdaftar, Datas{
+			Name:     strings.TrimSpace(record[0]),
+			Category: strings.TrimSpace(record[1]),
+			Price:    formatRupiah,
+		})
 	}
 
 	sort.Slice(tdaftar, func(i, j int) bool {
