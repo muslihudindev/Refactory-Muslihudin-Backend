@@ -50,7 +50,7 @@ func main() {
 	}
 
 	sort.Slice(tdaftar, func(i, j int) bool {
-		return tdaftar[i].Price < tdaftar[j].Price
+		return rupiah.GetAmount(tdaftar[i].Price) < rupiah.GetAmount(tdaftar[j].Price)
 	})
 
 	json_data, err := json.Marshal(tdaftar)
