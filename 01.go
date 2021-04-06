@@ -15,9 +15,9 @@ import (
 )
 
 type Datas struct {
-	Name     string  `json:"name"`
-	Category string  `json:"category"`
-	Price    float64 `json:"price"`
+	Name     string `json:"name"`
+	Category string `json:"category"`
+	Price    string `json:"price"`
 }
 
 func main() {
@@ -40,9 +40,8 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(strings.TrimSpace(record[2]))
-		feetFloat, _ := strconv.ParseFloat(strings.TrimSpace(record[2]), 64)
-		formatRupiah := rupiah.FormatRupiah(feetFloat)
+		feetFloat, _ := strconv.Atoi(strings.TrimSpace(record[2]))
+		formatRupiah := rupiah.FormatRupiah(float64(feetFloat))
 		tdaftar = append(tdaftar, Datas{
 			Name:     strings.TrimSpace(record[0]),
 			Category: strings.TrimSpace(record[1]),
