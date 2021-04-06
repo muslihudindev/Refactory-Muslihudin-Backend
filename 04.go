@@ -44,9 +44,9 @@ func main() {
 		}
 	}
 
-	fmt.Println("1. even : ", arrayToString(even, ","))
-	fmt.Println("\n2. odd : ", arrayToString(odd, ","))
-	fmt.Println("\n3. numbers multiplies by 5 : ", arrayToString(multiply, ","))
-	fmt.Println("\n4. prime numbers : ", arrayToString(prime, ","))
-	fmt.Println("\n5. prime numbers less than 100 : ", arrayToString(primelessthan100, ","))
+	fmt.Println("1) even : ", arrayToString(even, ", "))
+	fmt.Println("\n2) odd : ", arrayToString(odd, ", "))
+	fmt.Println("\n3) numbers multiplies by 5 : ", arrayToString(multiply, ", "))
+	fmt.Println("\n4) prime numbers : ", arrayToString(prime, ", "))
+	fmt.Println("\n5) prime numbers less than 100 : ", arrayToString(primelessthan100, ", "))
 }
