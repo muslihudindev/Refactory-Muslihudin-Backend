@@ -42,6 +42,5 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 	result := CensorWord(inputStr, notAllowed)
 
-	fmt.Println("Original : ", inputStr)
-	fmt.Println("Censored : ", result)
+	fmt.Println(result)
 }
