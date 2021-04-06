@@ -10,7 +10,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-	"github.com/yudapc/go-rupiah as rupiah"
+
+	rupiah "github.com/yudapc/go-rupiah"
 )
 
 type Datas struct {
